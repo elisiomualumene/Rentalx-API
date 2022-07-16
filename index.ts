@@ -1,0 +1,1 @@
+const Name: string = {["elsio" "maya" "jinga" "sadraque"],["Jose" "mom" "dad"]}
