@@ -1,13 +1,7 @@
 import { Category } from "../model/Category"
+import { ICategoryRepository } from "./ICategoryRepository";
 
-// DTO = Data Transfer Object
-
-interface ICreateCategoryDTO {
-    name: string;
-    description: string;
-}
-
-class CategoryRepository {
+class CategoryRepository implements ICategoryRepository{
     private Categories: Category[];
 
     constructor() {
