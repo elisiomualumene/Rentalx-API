@@ -1,6 +1,6 @@
-import { ICategoryRepository } from "../repositories/ICategoryRepository";
+import { ICategoryRepository } from "../../repositories/ICategoryRepository";
 
-class CreateCategoryService{
+class CreateCategoryUseCase{
 
     constructor(private repositoryCategories: ICategoryRepository){}
 
@@ -15,4 +15,4 @@ class CreateCategoryService{
     };
 };
 
-export { CreateCategoryService };
+export { CreateCategoryUseCase };
