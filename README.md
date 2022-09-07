@@ -9,7 +9,7 @@ Complete application to rent cars.
 Em seguida execute a API:
 
 ```bash
-yarn start
+yarn dev
 ```
 ## Stack
 
