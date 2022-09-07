@@ -1,4 +1,4 @@
-import { ISpecificationRepository } from "../repositories/ISpecificationRepository";
+import { ISpecificationRepository } from "../repositories/Specification/implementation/ISpecificationRepository";
 
 class CreateSpecificationService{
     constructor(private specificationRepository: ISpecificationRepository){}
