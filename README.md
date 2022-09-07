@@ -1,6 +1,6 @@
 ![App Screenshot](.github/cover.png)
 
-# Rentx
+# Rentalx
 Complete application to rent cars.
 
 ## Iniciando a aplicação
