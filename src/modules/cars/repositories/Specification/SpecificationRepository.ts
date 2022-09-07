@@ -5,9 +5,19 @@ import { ISpecificationRepository } from "./implementation/ISpecificationReposit
 class SpecificationRepository implements ISpecificationRepository{
     private specifications: Specification[];
 
-    constructor(){
+    private static INSTANCE: ISpecificationRepository;
+
+    private constructor(){
         this.specifications = [];
     }
+
+    public static getInstance(): ISpecificationRepository {
+        if(!SpecificationRepository.INSTANCE){
+            SpecificationRepository.INSTANCE = new SpecificationRepository();
+        }
+        return SpecificationRepository.INSTANCE;
+    }
+
     create({ name, description }: ISpecificationDTO): void {
         const specification = new Specification();
 
