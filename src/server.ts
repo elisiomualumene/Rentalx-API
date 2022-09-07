@@ -1,18 +1,15 @@
 import express, { json } from "express"
-import { categoriesRoutes } from "./Routes/categories.routes";
-import { IndexRoutes } from "./Routes/index.routes"
-import { specificationRoutes } from "./Routes/specifcations.routes";
-
+import dotenv from "dotenv"
+import { router } from "./Routes";
 
 const app = express();
-
+dotenv.config();
 app.use(json());
 
-const port = 3030;
+const port = process.env.PORT_SERVER;
 
-app.use("/", IndexRoutes);
-app.use("/categories",categoriesRoutes);
-app.use("/specifications", specificationRoutes);
+app.use(router)
+
 app.listen(port, () => {
-    console.log(`Server is Running on port ${port}`);
+    console.log(`Server is Running on port ${process.env.PORT_SERVER}`);
 });
