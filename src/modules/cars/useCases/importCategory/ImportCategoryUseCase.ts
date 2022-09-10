@@ -27,7 +27,8 @@ class ImportCategoryUseCase{
                 categories.push({name, description})
             })
             .on("end", () => {
-                resolver(categories)
+                fs.promises.unlink(file.path);
+                resolver(categories);
             })
             .on("error", (err) => {
                 reject(err)
@@ -47,12 +48,10 @@ class ImportCategoryUseCase{
                 this.categoryRepository.create({
                     name,
                     description
-                })
-            }
-        })
-
-        console.log(categories)
-    }
-}
+                });
+            };
+        });
+    };
+};
 
 export {ImportCategoryUseCase}

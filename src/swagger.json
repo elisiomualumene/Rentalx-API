@@ -1,0 +1,77 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Rentalx Documentation",
+        "description": "This is an API to rend cars ",
+        "version": "1.0.0",
+        "contact": {
+            "email": "elisiomualumene@gmail.com"
+        }
+    },
+
+    "paths": {
+        "/categories": {
+            "post": {
+                "tags": ["Category"],
+                "summary": "create category",
+                "description": "create a new Category",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema":{
+                                "type": "Object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "Category name sample",
+                                    "description":"category description sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "500": {
+                        "description": "category already exists"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Category"],
+                "summary": "List all Categories",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "Object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
