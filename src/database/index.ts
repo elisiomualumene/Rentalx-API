@@ -8,10 +8,9 @@ const PostgresDataSource = new DataSource({
     username: "rentalx",
     password: "",
     database: "rentalx",
-    entities: [
-        // ....
-    ],
+    entities: [],
+    migrations: ["./src/database/migrations/*.ts"],
 })
 
 
-PostgresDataSource.initialize()
+PostgresDataSource.initialize() 

@@ -17,13 +17,14 @@
     "pg": "^8.8.0",
     "reflect-metadata": "^0.1.13",
     "swagger-ui-express": "^4.5.0",
+    "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
-    "typeorm": "^0.3.9",
+    "typeorm": "^0.3.10",
     "uuid": "^8.3.2"
   },
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
-    "typeorm": "ts-node-dev typeorm-ts-node-commonjs"
+    "typeorm": "typeorm-ts-node-esm"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
