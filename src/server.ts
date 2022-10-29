@@ -1,12 +1,11 @@
 import "reflect-metadata"
-
 import express, { json } from "express"
 import dotenv from "dotenv"
 import { router } from "./Routes";
 import swaggerUI from "swagger-ui-express"
 import swaggerFile from "./swagger.json"
 
-
+import "./database"
 
 const app = express();
 dotenv.config();

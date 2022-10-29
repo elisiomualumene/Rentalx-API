@@ -1,41 +1,55 @@
-import { Category } from "../../model/Category"
+import { Category } from "../../entities/Category"
 import { ICategoryRepository } from "./implementation/ICategoryRepository";
+import {getRepository, Repository} from "typeorm"
+
 
 class CategoryRepository implements ICategoryRepository{
-    private Categories: Category[];
+    // proivate category: Category[];
+    private repository: Repository<Category>;
 
     //Singleton Pattern 
-    private static INSTANCE: ICategoryRepository
+   // private static INSTANCE: ICategoryRepository
     //with Pattern constructor neew to be private
-    private constructor() {
-        this.Categories = [];
+
+    //private
+     constructor() {
+        this.repository = getRepository(Category);
+        //this.cateogry = [];
     }
     // now i verify if already exists a INSTANCE, if already have an INSTANCE return them
-    public static getInstance(): ICategoryRepository {
-        if(!CategoryRepository.INSTANCE){
-            CategoryRepository.INSTANCE = new CategoryRepository();
-        }
-        return CategoryRepository.INSTANCE;
-    }
+    // public static getInstance(): ICategoryRepository {
+    //     if(!CategoryRepository.INSTANCE){
+    //         CategoryRepository.INSTANCE = new CategoryRepository();
+    //     }
+    //     return CategoryRepository.INSTANCE;
+    // }
 
-    create({name,description}: ICreateCategoryDTO) {
-    const category = new Category();
-    // a method to put variables to an object
-    Object.assign(category, {
-        name,
-        description,
-        created_at: new Date()
-    });
+    async create({name,description}: ICreateCategoryDTO): Promise<void> {
+        //const category = new Category();
+        // a method to put variables to an object
+        // Object.assign(category, {
+        //     name,
+        //     description,
+        //     created_at: new Date()
+        // });
 
-    this.Categories.push(category);
+        const category = this.repository.create({
+            description,
+            name
+        })
+
+
+        await this.repository.save(category);
     };
 
-    list(): Category[] {
-        return this.Categories
+    async list(): Promise<Category[]> {
+        const Categories = await this.repository.find();
+        return Categories
     };
 
-    findByName(name: string): Category {
-        const category = this.Categories.find(Category => Category.name === name);
+    async findByName(name: string): Promise<any> {
+        // SQL => select * from Category where name = "name" limit 1
+        const category = await this.repository.findOne({ name })
 
         return category
     };
