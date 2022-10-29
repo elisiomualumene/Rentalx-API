@@ -1,24 +1,18 @@
 {
-   "type": "mysql",
+   "type": "postgres",
    "host": "localhost",
-   "port": 3306,
-   "username": "test",
+   "port": 5432,
+   "username": "rentalx",
    "password": "test",
-   "database": "test",
-   "synchronize": true,
-   "logging": false,
+   "database": "rentalx",
    "entities": [
-      "src/entity/**/*.ts"
+      "src/database/entities/**/*.ts"
    ],
    "migrations": [
-      "src/migration/**/*.ts"
-   ],
-   "subscribers": [
-      "src/subscriber/**/*.ts"
+      "src/database/migration/**/*.ts"
    ],
    "cli": {
-      "entitiesDir": "src/entity",
-      "migrationsDir": "src/migration",
-      "subscribersDir": "src/subscriber"
+      "entitiesDir": "src/database/entities",
+      "migrationsDir": "src/database/migration"
    }
 }
