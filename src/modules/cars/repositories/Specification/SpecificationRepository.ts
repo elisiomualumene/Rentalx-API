@@ -1,43 +1,56 @@
-import { Category } from "../../entities/Category";
+
 import { Specification } from "../../entities/Specification";
 import { ISpecificationRepository } from "./implementation/ISpecificationRepository";
+import {Repository} from "typeorm"
+import { AppDataSource } from '../../../../database/index';
 
 class SpecificationRepository implements ISpecificationRepository{
-    private specifications: Specification[];
+    // private specifications: Specification[];
+    private specifications: Repository<Specification>;
+    //private static INSTANCE: ISpecificationRepository;
 
-    private static INSTANCE: ISpecificationRepository;
-
-    private constructor(){
-        this.specifications = [];
+     constructor(){
+        //this.specifications = [];
+        this.specifications = AppDataSource.getRepository(Specification);
     }
 
-    public static getInstance(): ISpecificationRepository {
-        if(!SpecificationRepository.INSTANCE){
-            SpecificationRepository.INSTANCE = new SpecificationRepository();
-        }
-        return SpecificationRepository.INSTANCE;
-    }
+    // public static getInstance(): ISpecificationRepository {
+    //     if(!SpecificationRepository.INSTANCE){
+    //         SpecificationRepository.INSTANCE = new SpecificationRepository();
+    //     }
+    //     return SpecificationRepository.INSTANCE;
+    // }
 
-    create({ name, description }: ISpecificationDTO): void {
-        const specification = new Specification();
+    async create({ name, description }: ISpecificationDTO): Promise<void> {
+        // const specification = new Specification();
 
-        Object.assign(specification, {
+        // Object.assign(specification, {
+        //     name,
+        //     description,
+        //     created_at: new Date(),
+        // });
+
+        const Specification = this.specifications.create({
             name,
-            description,
-            created_at: new Date(),
+            description
         });
 
-        this.specifications.push(specification);
+        //this.specifications.push(specification);
+        await this.specifications.save(Specification);
     };
 
-    findByName(name: string): Specification {
-        const specification = this.specifications.find(specification => specification.name === name);
+    async findByName(name: string): Promise<any> {
+        // const specification = this.specifications.find(specification => specification.name === name);
+
+        /// SQL -> select * from Specifications where name = name;
+        const specification = await this.specifications.findOneBy({ name });
 
         return specification;
     };
 
-    list(): Specification[]{
-        return this.specifications
+    async list(): Promise<Specification[]>{
+        const allRegister = await this.specifications.find();
+        return allRegister;
     };
 }
 

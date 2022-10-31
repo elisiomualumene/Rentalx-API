@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3'
 services:
   api:
     container_name: api
@@ -12,11 +12,13 @@ services:
       - .:/usr/src/app
     networks:
       - rentalx
+    links:
+      - "db:database"
   db:
     container_name: postgres
     image: postgres
     ports:
-      - '5433:5432'
+      - '5432:5432'
     volumes:
       - pgdata:/data/postgres
     networks:
@@ -26,9 +28,12 @@ services:
       POSTGRES_PASSWORD: test
       POSTGRES_DB: rentalx
 
+
 volumes: 
   pgdata:
     driver: local
 networks:
   rentalx:
     driver: bridge
+  default:
+    driver: custom-driver-1

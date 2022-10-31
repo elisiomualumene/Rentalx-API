@@ -17,3 +17,14 @@ class CreateSpecificationService{
 }
 
 export {CreateSpecificationService};
+
+
+
+// Arquitetura De Design de Sistemas -> S.O.L.I.D
+
+/*
+    S -> Sigle Responsability Principle;
+    O ->  Open Close Principle;
+    L -> Liskov Subsitute Principle
+    I _>  
+*/

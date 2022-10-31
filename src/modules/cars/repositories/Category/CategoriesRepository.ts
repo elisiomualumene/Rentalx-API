@@ -1,6 +1,8 @@
 import { Category } from "../../entities/Category"
 import { ICategoryRepository } from "./implementation/ICategoryRepository";
-import {getRepository, Repository} from "typeorm"
+import { Repository} from "typeorm"
+import { AppDataSource } from '../../../../database/index';
+
 
 
 class CategoryRepository implements ICategoryRepository{
@@ -13,7 +15,7 @@ class CategoryRepository implements ICategoryRepository{
 
     //private
      constructor() {
-        this.repository = getRepository(Category);
+        this.repository = AppDataSource.getRepository(Category);
         //this.cateogry = [];
     }
     // now i verify if already exists a INSTANCE, if already have an INSTANCE return them
@@ -49,7 +51,7 @@ class CategoryRepository implements ICategoryRepository{
 
     async findByName(name: string): Promise<any> {
         // SQL => select * from Category where name = "name" limit 1
-        const category = await this.repository.findOne({ name })
+        const category = await this.repository.findOneBy({ name })
 
         return category
     };
