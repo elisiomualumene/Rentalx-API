@@ -1,18 +1,16 @@
 import {Category} from "../modules/cars/entities/Category"
-import { DataSource } from "typeorm";
+import {CreateCategory1664470153748} from "./migrations/1664470153748-CreateCategory"
+import { DataSource } from 'typeorm';
 
-const entities = {
-    Category,
-}
 
 export const AppDataSource = new DataSource({
     type: 'postgres',
-    host: '0.0.0.0',
-    port: Number('5432'),
+    host: 'db',
+    port: 5432,
     username: 'rentalx',
     password: 'test',
     database: 'rentalx',
-    entities,
-    subscribers: [],
-    migrations: ['./migrations/*'],
+    entities: [Category],
+    synchronize: true,
+    migrations: [CreateCategory1664470153748],
   });

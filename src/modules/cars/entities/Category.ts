@@ -1,16 +1,18 @@
 import {v4 as uuidV4} from "uuid"
 import {Entity, Column, PrimaryColumn, CreateDateColumn} from "typeorm"
 
-@Entity("categories")
+@Entity("Category")
 class Category {
     @PrimaryColumn()
     id?: string;
 
-    @Column()
-    name: string | undefined;
+    @Column({
+        length: 100,
+    })
+    name!: string;
 
     @Column()
-    description:string | undefined;
+    description!: string;
 
     @CreateDateColumn()
     created_at?: Date;
