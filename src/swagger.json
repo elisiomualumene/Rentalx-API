@@ -109,6 +109,7 @@
             },
             "get": {
                 "tags": ["Specifications"],
+                "summary": "List all Specifications",
                 "description": "List Specifications",
                 "responses": {
                     "200": {

@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 
-interface IReqRes {
+export interface IReqRes {
     request: Request;
     response: Response;
 }
 
-interface IImportCategory{
+export interface IImportCategory{
     name: string,
     description: string;
 }

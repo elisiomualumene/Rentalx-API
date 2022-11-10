@@ -1,11 +1,12 @@
 // DTO = Data Transfer Object
 
-interface ICreateCategoryDTO {
+export interface ICreateCategoryDTO {
     name: string;
     description: string;
 }
 
-interface ISpecificationDTO {
+export interface ISpecificationDTO {
     name: string;
     description: string;
 }
+

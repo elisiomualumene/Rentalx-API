@@ -1,5 +1,9 @@
 import {Category} from "../modules/cars/entities/Category"
+import { Specification } from "../modules/cars/entities/Specification";
+
 import {CreateCategory1664470153748} from "./migrations/1664470153748-CreateCategory"
+import { createSpecification1667240325686 } from "./migrations/1667240325686-CreateSpecifications";
+
 import { DataSource } from 'typeorm';
 
 
@@ -10,7 +14,8 @@ export const AppDataSource = new DataSource({
     username: 'rentalx',
     password: 'test',
     database: 'rentalx',
-    entities: [Category],
+    entities: [Category, Specification],
     synchronize: true,
-    migrations: [CreateCategory1664470153748],
+    logging: true,
+    migrations: [CreateCategory1664470153748, createSpecification1667240325686]
   });
