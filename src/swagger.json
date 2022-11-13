@@ -73,6 +73,33 @@
                 }
             }
         },
+        "/categories/import": {
+            "post": {
+                "tags": ["Import Category"],
+                "summary": "Import a category",
+                "description": "Import a category by a CSV file",
+                "requestBody": {
+                        "content": {
+                            "multipart/form-data": {
+                                "schema": {
+                                    "type": "string",
+                                    "properties": {
+                                        "file": {
+                                            "type":"string",
+                                            "format":"binary"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
         "/specifications": {
             "post": {
                 "tags": ["Specifications"],
