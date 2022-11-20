@@ -10,3 +10,9 @@ interface IResponse {
     };
     token: string;
 }
+
+
+interface IUpdateUser {
+    user_id: string;
+    avatar_file: any;
+}

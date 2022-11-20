@@ -1,5 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../../repositories/IUserRepository";
+import { AppError } from '../../../../errors/AppError';
 
 @injectable()
 export class DeleteUserUseCase {
@@ -8,7 +9,8 @@ export class DeleteUserUseCase {
         private userRepository: IUserRepository
     ){}
 
-    async execute(id: string){
-        await this.userRepository.deleteById(id);
+    async execute(id: string): Promise<void>{
+       await this.userRepository.deleteById(id);
+
     }
 }

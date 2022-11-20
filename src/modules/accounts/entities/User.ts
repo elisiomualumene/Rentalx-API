@@ -25,6 +25,11 @@ class User {
     @Column()
     isAdmin!: boolean;
 
+    @Column({
+        default: ""
+    })
+    avatar: string;
+
     @CreateDateColumn()
     created_at?: Date
 
@@ -32,6 +37,7 @@ class User {
         if(!this.id){
             this.id = uuidV4();
         }
+        this.avatar = ""
     }
 
 }
