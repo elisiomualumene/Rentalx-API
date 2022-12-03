@@ -1,6 +1,6 @@
 import { AppError } from './../../../../errors/AppError';
 import { inject, injectable } from "tsyringe";
-import { IUserRepository } from "../../repositories/IUserRepository";
+import { IUserRepository } from "../../repositories/User/IUserRepository";
 import  { hash }  from "bcrypt";
 
 @injectable()

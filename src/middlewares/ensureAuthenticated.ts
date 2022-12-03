@@ -1,7 +1,7 @@
 import { AppError } from './../errors/AppError';
 import {NextFunction, Request, Response} from "express"
 import { verify } from "jsonwebtoken";
-import { UserRepository } from "../modules/accounts/repositories/implementation/UserRepository";
+import { UserRepository } from "../modules/accounts/repositories/User/implementation/UserRepository";
 
 export async function ensureAuthenticated(request: Request, response: Response, next: NextFunction){
     const authHeader = request.headers.authorization;

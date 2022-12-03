@@ -1,7 +1,7 @@
 import { IUserRepository } from "../IUserRepository";
 import { Repository } from 'typeorm';
-import { User } from "../../entities/User";
-import { AppDataSource } from "../../../../database";
+import { User } from "../../../entities/User";
+import { AppDataSource } from "../../../../../database";
 
 class UserRepository implements IUserRepository {
     private repository: Repository<User>
