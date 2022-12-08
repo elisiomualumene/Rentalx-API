@@ -1,4 +1,4 @@
-import {app} from "./app"
+import {app} from "./shared/infraestructure/http/app"
 
 const port = process.env.PORT_SERVER || 3030;
 

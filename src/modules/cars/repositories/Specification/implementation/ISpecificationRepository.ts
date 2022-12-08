@@ -1,4 +1,4 @@
-import { Specification } from "../../../entities/Specification";
+import { Specification } from "../../../infraestructure/typeorm/entities/Specification";
 import { ISpecificationDTO } from "../../../types/repositories";
 
 interface ISpecificationRepository{

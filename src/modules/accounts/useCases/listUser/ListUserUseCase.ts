@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import { User } from "../../entities/User";
+import { User } from "../../infraestructure/typeorm/entities/User";
 import { IUserRepository } from "../../repositories/User/IUserRepository";
 
 @injectable()

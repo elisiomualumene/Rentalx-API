@@ -1,8 +1,8 @@
 import { Category } from "../../entities/Category"
-import { ICategoryRepository } from "./implementation/ICategoryRepository";
+import { ICategoryRepository } from "../../../../repositories/Category/implementation/ICategoryRepository";
 import { Repository } from "typeorm"
-import { AppDataSource } from '../../../../database/index';
-import { ICreateCategoryDTO } from "../../types/repositories";
+import { AppDataSource } from '../../../../../../shared/infraestructure/database/index';
+import { ICreateCategoryDTO } from "../../../../types/repositories";
 
 
 

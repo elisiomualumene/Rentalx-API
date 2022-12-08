@@ -13,7 +13,7 @@ class createSpecificationController {
         
         await CreateSpecificationUseCase.execute({name, description});
 
-        return response.status(201).json({'message': 'Specification was added'})
+        return response.status(201).json({status: true,'message': 'Specification was added'})
     }
 }
 

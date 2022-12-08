@@ -1,4 +1,4 @@
-import { User } from "../../entities/User";
+import { User } from "../../infraestructure/typeorm/entities/User";
 
 interface IUserRepository {
     create(data: ICreateUserDTO): Promise<void>;

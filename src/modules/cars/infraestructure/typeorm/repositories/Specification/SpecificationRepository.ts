@@ -1,9 +1,9 @@
 
 import { Specification } from "../../entities/Specification";
-import { ISpecificationRepository } from "./implementation/ISpecificationRepository";
+import { ISpecificationRepository } from "../../../../repositories/Specification/implementation/ISpecificationRepository";
 import {Repository} from "typeorm"
-import { AppDataSource } from '../../../../database/index';
-import { ISpecificationDTO } from "../../types/repositories";
+import { AppDataSource } from '../../../../../../shared/infraestructure/database/index';
+import { ISpecificationDTO } from "../../../../types/repositories";
 
 class SpecificationRepository implements ISpecificationRepository{
     private specifications: Repository<Specification>;

@@ -1,8 +1,8 @@
 import "reflect-metadata"
 
-import "./shared/container";
+import "../../container";
 
-import {AppDataSource} from "./database/index"
+import {AppDataSource} from "../database/index"
 import { NextFunction, Request, Response } from 'express';
 import "express-async-errors"
 import express, { json } from "express"
@@ -12,10 +12,10 @@ import dotenv from "dotenv"
 import { router } from "./Routes";
 
 import swaggerUI from "swagger-ui-express"
-import swaggerFile from "./swagger.json"
+import swaggerFile from "../../../swagger.json"
 
-import "./database"
-import { AppError } from './errors/AppError';
+import "../database"
+import { AppError } from '../../errors/AppError';
 
 const app = express();
 AppDataSource.initialize();

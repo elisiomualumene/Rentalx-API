@@ -1,4 +1,4 @@
-import { Category } from "../../entities/Category";
+import { Category } from "../../infraestructure/typeorm/entities/Category";
 import { inject, injectable } from "tsyringe";
 import { ICategoryRepository } from "../../repositories/Category/implementation/ICategoryRepository";
 

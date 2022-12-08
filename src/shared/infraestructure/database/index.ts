@@ -1,6 +1,6 @@
-import {Category} from "../modules/cars/entities/Category"
-import { Specification } from "../modules/cars/entities/Specification";
-import { User } from "../modules/accounts/entities/User";
+import {Category} from "../../../modules/cars/infraestructure/typeorm/entities/Category"
+import { Specification } from "../../../modules/cars/infraestructure/typeorm/entities/Specification";
+import { User } from "../../../modules/accounts/infraestructure/typeorm/entities/User";
 
 import { DataSource } from 'typeorm';
 

@@ -1,4 +1,4 @@
-import { Specification } from "../../entities/Specification";
+import { Specification } from "../../infraestructure/typeorm/entities/Specification";
 import { inject, injectable } from "tsyringe";
 import { ISpecificationRepository } from "../../repositories/Specification/implementation/ISpecificationRepository";
 

@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { ISpecificationRepository } from "../../repositories/Specification/implementation/ISpecificationRepository";
 import { IRequest } from "../../types/services";
-import { AppError } from '../../../../errors/AppError';
+import { AppError } from '../../../../shared/errors/AppError';
 
 @injectable()
 class createSpecificationUseCase{
