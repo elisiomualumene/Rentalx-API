@@ -16,7 +16,7 @@ class createSpecificationUseCase{
             throw new AppError("Category Already exists!");
         }
 
-        this.SpecificationRepository.create({name, description});
+        await this.SpecificationRepository.create({name, description});
     };
 }
 
