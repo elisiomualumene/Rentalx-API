@@ -3,7 +3,7 @@ import { Specification } from "../../entities/Specification";
 import { ISpecificationRepository } from "../../../../repositories/Specification/implementation/ISpecificationRepository";
 import {Repository} from "typeorm"
 import { AppDataSource } from '../../../../../../shared/infraestructure/database/index';
-import { ISpecificationDTO } from "../../../../types/repositories";
+import { ISpecificationDTO } from "../../../../types/dtos";
 
 class SpecificationRepository implements ISpecificationRepository{
     private specifications: Repository<Specification>;
