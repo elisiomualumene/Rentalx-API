@@ -2,7 +2,7 @@ import { Category } from "../../entities/Category"
 import { ICategoryRepository } from "../../../../repositories/Category/implementation/ICategoryRepository";
 import { Repository } from "typeorm"
 import { AppDataSource } from '../../../../../../shared/infraestructure/database/index';
-import { ICreateCategoryDTO } from "../../../../types/repositories";
+import { ICreateCategoryDTO } from "../../../../types/dtos";
 
 
 
