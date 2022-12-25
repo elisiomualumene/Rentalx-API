@@ -1,5 +1,5 @@
-import { Specification } from "../../../infraestructure/typeorm/entities/Specification";
-import { ISpecificationDTO } from "../../../types/dtos";
+import {Specification} from '../../../infraestructure/typeorm/entities/Specification';
+import {ISpecificationDTO} from '../../../types/dtos';
 
 interface ISpecificationRepository{
     create({name, description}: ISpecificationDTO): Promise<void>;
@@ -7,4 +7,4 @@ interface ISpecificationRepository{
     list(): Promise<Specification[]>;
 }
 
-export {ISpecificationRepository}
+export {ISpecificationRepository};

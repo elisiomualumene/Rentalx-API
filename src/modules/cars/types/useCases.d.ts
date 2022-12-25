@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import {Request, Response} from 'express';
 
 export interface IReqRes {
     request: Request;
@@ -14,7 +14,6 @@ export interface ICreateCarProps {
     name: string;
     description: string;
     daily_rate: number;
-    available: boolean;
     licence_plate: string;
     fine_amount: number;
     brand: string;

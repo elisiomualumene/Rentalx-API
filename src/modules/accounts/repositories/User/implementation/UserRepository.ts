@@ -1,54 +1,53 @@
-import { IUserRepository } from "../IUserRepository";
-import { Repository } from 'typeorm';
-import { User } from "../../../infraestructure/typeorm/entities/User";
-import { AppDataSource } from "../../../../../shared/infraestructure/database";
+import {IUserRepository} from '../IUserRepository';
+import {Repository} from 'typeorm';
+import {User} from '../../../infraestructure/typeorm/entities/User';
+import {AppDataSource} from '../../../../../shared/infraestructure/database';
 
 class UserRepository implements IUserRepository {
-    private repository: Repository<User>
-    
-    constructor(){
-        this.repository = AppDataSource.getRepository(User)
-    }
+  private repository: Repository<User>;
 
-    async create({name, username, email, password, driver_licence, isAdmin, id, avatar}: ICreateUserDTO): Promise<void> {
-        const user = this.repository.create({
-            name, 
-            username, 
-            email, 
-            password, 
-            driver_licence, 
-            isAdmin,
-            id,
-            avatar
-        });
+  constructor() {
+    this.repository = AppDataSource.getRepository(User);
+  }
 
-        await this.repository.save(user);
-    }
+  async create({name, username, email, password, driver_licence, isAdmin, id, avatar}: ICreateUserDTO): Promise<void> {
+    const user = this.repository.create({
+      name,
+      username,
+      email,
+      password,
+      driver_licence,
+      isAdmin,
+      id,
+      avatar,
+    });
 
-
-    async list(): Promise<User[]> {
-        const allUsers = await this.repository.find();
-
-        return allUsers;
-    }
+    await this.repository.save(user);
+  }
 
 
-    async findByEmail(email: string): Promise<any> {
-        const user = await this.repository.findOneBy({email})
+  async list(): Promise<User[]> {
+    const allUsers = await this.repository.find();
 
-        return user
-    }
+    return allUsers;
+  }
 
-    async deleteById(id: string): Promise<void> {
-        await this.repository.delete(id)
-    }
 
-    async findById(id: string): Promise<any> {
-        const userById = await this.repository.findOneBy({id})
+  async findByEmail(email: string): Promise<any> {
+    const user = await this.repository.findOneBy({email});
 
-        return userById;
-    }
-    
+    return user;
+  }
+
+  async deleteById(id: string): Promise<void> {
+    await this.repository.delete(id);
+  }
+
+  async findById(id: string): Promise<any> {
+    const userById = await this.repository.findOneBy({id});
+
+    return userById;
+  }
 }
 
-export { UserRepository };
+export {UserRepository};
