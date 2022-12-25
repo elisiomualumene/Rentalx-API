@@ -1,3 +1,4 @@
+
 // import {pathsToModuleNameMapper} from "ts-jest"
 // import { compilerOptions } from "./tsconfig.json";
 
@@ -7,8 +8,7 @@ export default {
   // automock: false,
 
   // Stop running tests after `n` failures
-   bail: true,
-
+  bail: true,
   // The directory where Jest should store its cached dependency information
   // cacheDirectory: "/private/var/folders/bj/4t2pl7gs42l4kc7c7n6fn7qm0000gp/T/jest_dy",
 
@@ -30,7 +30,7 @@ export default {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: "v8",
+  coverageProvider: 'v8',
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -86,8 +86,8 @@ export default {
   //   "node"
   // ],
 
-//   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-//    moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {prefix: "<rootDir>/src/"}),
+  //   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
+  //    moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {prefix: "<rootDir>/src/"}),
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -99,7 +99,7 @@ export default {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-   preset: 'ts-jest',
+  preset: 'ts-jest',
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -152,9 +152,9 @@ export default {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-   testMatch: [
-     "**/*.spec.ts"
-   ],
+  testMatch: [
+    '**/*.spec.ts',
+  ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
