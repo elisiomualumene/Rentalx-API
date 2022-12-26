@@ -8,12 +8,13 @@ import {createSpecification1667240325686 as SpecificationMigration} from './migr
 import {CreateUsers1668178211212 as UserMigration} from './migration/1668178211212-CreateUsers';
 import {AlterUserAddAvatar1668599236908 as AvatarMigration} from './migration/1668599236908-AlterUserAddAvatar';
 import {CreateCars1671819999593 as CarsMigration} from './migration/1671819999593-CreateCars';
+import { InsertUserValues1672062931180 as IsertUserValues } from './migration/1672062931180-InsertUserValues';
 
 import {DataSource} from 'typeorm';
 
 const Entity = [Category, Specification, User, Car];
 
-const Migrations = [CategoryMigration, SpecificationMigration, UserMigration, AvatarMigration, CarsMigration];
+const Migrations = [CategoryMigration, SpecificationMigration, UserMigration, AvatarMigration, CarsMigration, IsertUserValues];
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
