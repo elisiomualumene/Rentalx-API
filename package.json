@@ -31,7 +31,8 @@
     "typeorm": "typeorm-ts-node-esm",
     "docker": "docker-compose up --build",
     "test": "jest",
-    "lint": "eslint --fix --ext .ts,.tsx ./src"
+    "lint": "eslint --fix --ext .ts,.tsx ./src",
+    "seed": "ts-node-dev src/shared/infraestructure/database/seed/admin.ts"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
