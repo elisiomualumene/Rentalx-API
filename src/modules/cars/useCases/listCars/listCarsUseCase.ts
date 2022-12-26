@@ -1,3 +1,4 @@
+import { Car } from '../../../../modules/cars/infraestructure/typeorm/entities/Car';
 import {injectable, inject} from 'tsyringe';
 import {ICarRepository} from '../../../../modules/cars/repositories/Car/ICarRepository';
 
@@ -7,8 +8,8 @@ export class ListCarsUseCase {
         @inject('CarRepository')
         private carRepository: ICarRepository,
   ) {}
-  async execute() {
-    const cars = await this.carRepository.list();
+  async execute(): Promise<Car> {
+    const cars: any = await this.carRepository.list();
 
     return cars;
   }
