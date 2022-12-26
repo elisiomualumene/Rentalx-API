@@ -6,6 +6,7 @@ import {UpdateUserAvatarController} from '../../../../modules/accounts/useCases/
 import upload from '../../../../config/upload';
 import {ensureAuthenticated} from '../middlewares/ensureAuthenticated';
 import multer from 'multer';
+import { EnsureAdmin } from '../middlewares/ensureAdmin';
 
 const userRoutes = Router();
 
@@ -16,9 +17,9 @@ const listUserController = new ListUserController();
 const deleteUserController = new DeleteUserController();
 const updateUserAvatarController = new UpdateUserAvatarController();
 
-userRoutes.post('/', createUserController.handle);
-userRoutes.get('/', listUserController.handle);
-userRoutes.delete('/:id', deleteUserController.handle);
+userRoutes.post('/',ensureAuthenticated, createUserController.handle);
+userRoutes.get('/',ensureAuthenticated, listUserController.handle);
+userRoutes.delete('/:id',ensureAuthenticated, EnsureAdmin, deleteUserController.handle);
 userRoutes.patch('/avatar', ensureAuthenticated, uploadAvatar.single('avatar'), updateUserAvatarController.handle);
 
 export {userRoutes};
