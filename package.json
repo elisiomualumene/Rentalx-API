@@ -28,7 +28,7 @@
   },
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
-    "typeorm": "typeorm-ts-node-esm",
+    "typeorm": "ts-node-dev typeorm migration:run",
     "docker": "docker-compose up --build",
     "test": "jest",
     "lint": "eslint --fix --ext .ts,.tsx ./src",
