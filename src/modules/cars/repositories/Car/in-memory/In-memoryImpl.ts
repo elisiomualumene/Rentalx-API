@@ -43,4 +43,21 @@ export class In_memoryImpl implements ICarRepository {
 
     return cars;
   }
+
+  async listByAvailable(brand?: string, category_id?: string, name?: string): Promise<Car[]> {
+      const cars = this.Cars
+      .filter((car) => {
+          if(car.available === true || ((brand && car.brand === brand) || (category_id && car.category_id === category_id) || (name && car.name === name))
+          ){ 
+            return car
+          }
+        }
+      )
+      return cars
+  }
+
+  async findById(id: string): Promise<Car> {
+    const car: any = this.Cars.find((car) => car.id === id)
+      return car
+  }
 }
