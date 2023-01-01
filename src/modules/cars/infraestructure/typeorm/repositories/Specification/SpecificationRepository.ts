@@ -4,6 +4,7 @@ import {ISpecificationRepository} from '../../../../repositories/Specification/i
 import {Repository} from 'typeorm';
 import {AppDataSource} from '../../../../../../shared/infraestructure/database/index';
 import {ISpecificationDTO} from '../../../../types/dtos';
+import { In } from 'typeorm';
 
 class SpecificationRepository implements ISpecificationRepository {
   private specifications: Repository<Specification>;
@@ -11,12 +12,14 @@ class SpecificationRepository implements ISpecificationRepository {
   constructor() {
     this.specifications = AppDataSource.getRepository(Specification);
   }
-  async create({name, description}: ISpecificationDTO): Promise<void> {
+  async create({name, description}: ISpecificationDTO): Promise<Specification> {
     const Specification = this.specifications.create({
       name,
       description,
     });
     await this.specifications.save(Specification);
+
+    return Specification
   };
 
   async findByName(name: string): Promise<any> {
@@ -30,6 +33,12 @@ class SpecificationRepository implements ISpecificationRepository {
     const allRegister = await this.specifications.find();
     return allRegister;
   };
+
+  async findByIds(ids: any[]): Promise<Specification[]> {
+    const specification: any[] = await this.specifications.findBy({ id: In(ids) })
+
+    return specification
+}
 }
 
 export {SpecificationRepository};
