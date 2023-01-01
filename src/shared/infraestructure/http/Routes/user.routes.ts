@@ -17,8 +17,8 @@ const listUserController = new ListUserController();
 const deleteUserController = new DeleteUserController();
 const updateUserAvatarController = new UpdateUserAvatarController();
 
-userRoutes.post('/',ensureAuthenticated, createUserController.handle);
-userRoutes.get('/',ensureAuthenticated, listUserController.handle);
+userRoutes.post('/', createUserController.handle);
+userRoutes.get('/', listUserController.handle);
 userRoutes.delete('/:id',ensureAuthenticated, EnsureAdmin, deleteUserController.handle);
 userRoutes.patch('/avatar', ensureAuthenticated, uploadAvatar.single('avatar'), updateUserAvatarController.handle);
 
