@@ -1,29 +1,35 @@
 import { CreateCarSpecificationUseCase } from './CreateCarSpecificationUseCase';
 import { In_memoryImpl } from '../../repositories/Car/in-memory/In-memoryImpl';
 import { AppError } from '../../../../shared/errors/AppError';
+import { SpecificationRepositoryInMemory } from '../../repositories/Specification/InMemory/SpecificationRepositoryInMemory';
 
 let createCarSpecificationUseCase: CreateCarSpecificationUseCase
 let CarRepositoryInMemory : In_memoryImpl
+let specificationRepository: SpecificationRepositoryInMemory
 describe('Specification Car', () => {
     beforeEach(() => { 
         CarRepositoryInMemory = new In_memoryImpl()
-        createCarSpecificationUseCase = new CreateCarSpecificationUseCase(CarRepositoryInMemory)
+        specificationRepository = new SpecificationRepositoryInMemory()
+        createCarSpecificationUseCase = new CreateCarSpecificationUseCase(CarRepositoryInMemory, specificationRepository)
     })
 
     it('should be able to create a Specification car', async() => {
         const car = await CarRepositoryInMemory.create({
-            brand: 'Ferrari',
-            category_id: '123',
-            daily_rate: 100,
-            description: 'bigger',
-            fine_amount: 9,
-            licence_plate: '879595',
-            name: 'Carro',
+            brand: 'Audi',
+            category_id: '321',
+            daily_rate: 5,
+            description: 'comfortable',
+            fine_amount: 6,
+            licence_plate: 'C40-34N',
+            name: 'Audi Hurus',
+            id: '10203939-34err-e-45545-eer'
         })
-        const specification_id = ['2333']
-       expect(async() => {
-            await createCarSpecificationUseCase.execute({car_id: car.id ?? '', specification_id})
-       }).toBeTruthy()
+        const specification = await specificationRepository.create({description: 'Carro de Luxo', name:'Luxo'})
+        const specification_id = [specification.id]
+        const specificationsCars = await createCarSpecificationUseCase.execute({car_id: car.id, specification_id})
+
+        expect(specificationsCars).toHaveProperty('specifications')
+        expect(specificationsCars.specifications.length).toBe(1)
     })
 
     it('should not be able to create a car specification with an inexistent car', async() => {
