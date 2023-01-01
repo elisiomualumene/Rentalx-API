@@ -1,3 +1,4 @@
+import { Specification } from '../../../modules/cars/infraestructure/typeorm/entities/Specification';
 // DTO = Data Transfer Object
 
 export interface ICreateCategoryDTO {
@@ -18,4 +19,6 @@ export interface ICreateCarDTO {
     fine_amount: number;
     brand: string;
     category_id: string;
+    specifications?: Specification[];
+    id?: string;
 }
