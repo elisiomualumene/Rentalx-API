@@ -10,6 +10,7 @@ import {AlterUserAddAvatar1668599236908 as AvatarMigration} from './migration/16
 import {CreateCars1671819999593 as CarsMigration} from './migration/1671819999593-CreateCars';
 import { InsertUserValues1672062931180 as IsertUserValues } from './migration/1672062931180-InsertUserValues';
 import { CreateSpecificationCars1672078550852 as CreateSpecificationCar } from './migration/1672078550852-CreateSpecificationCars';
+import { CreateRentals1672580567381 as CreateRentals } from './migration/1672580567381-CreateRentals';
 
 import {DataSource} from 'typeorm';
 
@@ -22,7 +23,8 @@ const Migrations = [
   AvatarMigration, 
   CarsMigration, 
   IsertUserValues,
-  CreateSpecificationCar
+  CreateSpecificationCar,
+  CreateRentals
 ];
 
 export const AppDataSource = new DataSource({
