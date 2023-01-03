@@ -30,8 +30,6 @@ export class CreateCarSpecificationUseCase{
         carExists.specifications = specifications;
 
         await this.carRepository.create(carExists);
-
-        console.log(carExists);
         
         return carExists
     }
