@@ -1,6 +1,9 @@
-import { Rental } from '@modules/rentals/infraestructure/typeorm/entities/Rental';
-import { IRentalRepository } from '../../../../modules/rentals/infraestructure/typeorm/repositories/IRentalRepository';
+import { injectable, inject } from 'tsyringe';
+import { Rental } from '../../../../modules/rentals/infraestructure/typeorm/entities/Rental';
+import { IDateProvider } from '../../../../shared/container/providers/DateProvider/IDateProvider';
+import { IRentalRepository } from '../../repositories/IRentalRepository';
 import { AppError } from '../../../../shared/errors/AppError';
+import dayjs from 'dayjs';
 
 interface IRequest {
     user_id: string;
@@ -8,11 +11,16 @@ interface IRequest {
     expected_return_date: Date;
 }
 
+@injectable()
 export class CreateRentalUseCase{
     constructor(
-        private rentalRepository: IRentalRepository
+        @inject('RentalRepository')
+        private rentalRepository: IRentalRepository,
+        @inject('DayJsProvider')
+        private dataProvider: IDateProvider
     ){}
     async execute({car_id,expected_return_date,user_id}:IRequest): Promise<Rental>{
+        const min = 24;
         const carUnavailable = await this.rentalRepository.findOpenRentalByCar(car_id);
 
         if(carUnavailable){
@@ -23,6 +31,12 @@ export class CreateRentalUseCase{
 
         if(rentalOpenToUser){
             throw new AppError("There are a rental in progress for this user")
+        }
+
+        const compare = this.dataProvider.compareInHours(dayjs().toDate(), expected_return_date)
+        
+        if(compare < min){
+            throw new AppError('Invalid return time')
         }
 
         const rental = await this.rentalRepository.create({car_id, user_id, expected_return_date})
