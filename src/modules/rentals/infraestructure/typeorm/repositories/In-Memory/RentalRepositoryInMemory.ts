@@ -1,5 +1,5 @@
 import { Rental } from '../../entities/Rental';
-import { IRentalRepository } from "../IRentalRepository";
+import { IRentalRepository } from "../../../../repositories/IRentalRepository";
 
 export class RentalRepositoryInMemory implements IRentalRepository {
     private rentals: Rental[] = [];
