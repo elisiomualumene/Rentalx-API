@@ -13,8 +13,9 @@ import { CreateSpecificationCars1672078550852 as CreateSpecificationCar } from '
 import { CreateRentals1672580567381 as CreateRentals } from './migration/1672580567381-CreateRentals';
 
 import {DataSource} from 'typeorm';
+import { Rental } from '../../../modules/rentals/infraestructure/typeorm/entities/Rental';
 
-const Entity = [Category, Specification, User, Car];
+const Entity = [Category, Specification, User, Car, Rental];
 
 const Migrations = [
   CategoryMigration, 
