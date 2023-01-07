@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import { injectable, inject } from 'tsyringe';
 import { Rental } from '../../../../modules/rentals/infraestructure/typeorm/entities/Rental';
 import { IDateProvider } from '../../../../shared/container/providers/DateProvider/IDateProvider';
