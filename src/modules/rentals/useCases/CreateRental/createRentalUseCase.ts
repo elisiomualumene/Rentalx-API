@@ -5,6 +5,7 @@ import { IDateProvider } from '../../../../shared/container/providers/DateProvid
 import { IRentalRepository } from '../../repositories/IRentalRepository';
 import { AppError } from '../../../../shared/errors/AppError';
 import dayjs from 'dayjs';
+import { ICarRepository } from '../../../../modules/cars/repositories/Car/ICarRepository';
 
 interface IRequest {
     user_id: string;
@@ -18,7 +19,9 @@ export class CreateRentalUseCase{
         @inject('RentalRepository')
         private rentalRepository: IRentalRepository,
         @inject('DayJsProvider')
-        private dataProvider: IDateProvider
+        private dataProvider: IDateProvider,
+        @inject('CarRepository')
+        private carRepository: ICarRepository
     ){}
     async execute({car_id,expected_return_date,user_id}:IRequest): Promise<Rental>{
         const min = 24;
@@ -41,6 +44,10 @@ export class CreateRentalUseCase{
         }
 
         const rental = await this.rentalRepository.create({car_id, user_id, expected_return_date})
+
+        const available = false;
+
+        await this.carRepository.updateByAvailable({id: car_id, available})
 
         return rental
     }
