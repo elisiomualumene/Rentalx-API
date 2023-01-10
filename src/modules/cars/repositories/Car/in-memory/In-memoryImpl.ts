@@ -62,4 +62,10 @@ export class In_memoryImpl implements ICarRepository {
     const car: any = this.Cars.find((car) => car.id === id)
       return car
   }
+
+  async updateByAvailable({id, available}: IUpdateAvailable): Promise<void> {
+    const findIndex = this.Cars.findIndex((car) => car.id === id)
+
+    this.Cars[findIndex].available = available;
+}
 }
